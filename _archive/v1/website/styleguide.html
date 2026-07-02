@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treat Life Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="sg-page">
+  <div class="container">
+    <header class="sg-header">
+      <p class="eyebrow">Design System</p>
+      <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4rem);">Treat Life Style Guide</h1>
+      <p class="hero-copy">Foundations and homepage components. Tokens: <code>../../treatlife-ai-design-system/tokens/treatlife.tokens.json</code></p>
+      <p style="margin-top: 1rem;"><a href="index.html">← Back to homepage</a></p>
+    </header>
+
+    <section class="sg-section">
+      <h2>Colors</h2>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#0d0d0d"></div><div class="sg-swatch-label">black #0d0d0d</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#121212"></div><div class="sg-swatch-label">ink #121212</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#d4af37"></div><div class="sg-swatch-label">gold #d4af37</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#f2eee4"></div><div class="sg-swatch-label">cream #f2eee4</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#bdb5a4"></div><div class="sg-swatch-label">muted #bdb5a4</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#a94a64"></div><div class="sg-swatch-label">pb-jams #a94a64</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#8b1f24"></div><div class="sg-swatch-label">berry #8b1f24</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#b88b2e"></div><div class="sg-swatch-label">mustard #b88b2e</div></div>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Typography</h2>
+      <div class="sg-type-sample">
+        <p class="sg-type-label">Display — Bebas Neue</p>
+        <p class="hero-title" style="font-size: 3rem; margin: 0;">Live the Treat Life.</p>
+      </div>
+      <div class="sg-type-sample">
+        <p class="sg-type-label">Eyebrow</p>
+        <p class="eyebrow">Premium Dog Treats</p>
+      </div>
+      <div class="sg-type-sample">
+        <p class="sg-type-label">Body — Inter</p>
+        <p class="story-copy">Human grade ingredients. Designed for good dogs. Built for people with good taste.</p>
+      </div>
+      <div class="sg-type-sample">
+        <p class="sg-type-label">Flavor script — Georgia italic</p>
+        <p style="color: var(--tl-gold); font-family: var(--tl-font-flavor); font-size: 1.65rem; font-style: italic; margin: 0;">PB &amp; The Jams</p>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Buttons</h2>
+      <div class="sg-component-preview" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+        <a href="index.html#treats" class="btn btn-gold btn-lg">Shop Treats</a>
+        <a href="index.html#brand" class="btn btn-ghost btn-lg">View Concept</a>
+        <a href="index.html#drop" class="btn btn-outline-gold">Join the Drop</a>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Form Input</h2>
+      <div class="sg-component-preview">
+        <label class="sr-only" for="sg-email">Email address</label>
+        <input id="sg-email" type="email" class="form-control" placeholder="Email address">
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Announcement Bar</h2>
+      <div class="announcement-bar text-center">Human Grade. Dog Approved.</div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Proof Strip Item</h2>
+      <div class="sg-component-preview">
+        <div class="value-item" style="border: 0; padding: 0;">
+          <div class="value-icon" aria-hidden="true">◎</div>
+          <h3>Human Grade</h3>
+          <p>Real ingredients. Real benefits.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Product Card</h2>
+      <div class="product-grid" style="grid-template-columns: 1fr; max-width: 320px;">
+        <article class="product-card product-pb">
+          <div class="product-accent"></div>
+          <div class="product-pack">
+            <span class="pack-top">Treat Life</span>
+            <h3>PB &amp; The Jams</h3>
+            <p>Peanut Butter + Blueberry</p>
+            <small>Human Grade Dog Treats</small>
+          </div>
+          <div class="product-body">
+            <span class="accent-label">Dusty Pink Accent</span>
+            <h4>PB &amp; The Jams</h4>
+            <p>Peanut butter, blueberry, and hip hop energy.</p>
+            <a href="index.html#flavor-pb-jams" class="btn btn-card">View Flavor</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Drop Panel</h2>
+      <div class="drop-panel text-center">
+        <p class="eyebrow">Limited Drops</p>
+        <h2>First batch. Founding customers.</h2>
+        <p>Join the launch list for early access.</p>
+        <form class="drop-form" id="dropForm">
+          <label class="sr-only" for="sg-drop-email">Email address</label>
+          <input id="sg-drop-email" type="email" class="form-control" placeholder="Email address" required>
+          <button class="btn btn-gold btn-lg" type="submit">Notify Me</button>
+        </form>
+        <p class="drop-success" id="dropSuccess" role="status" hidden>
+          You are on the list. Welcome to the Treat Life.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

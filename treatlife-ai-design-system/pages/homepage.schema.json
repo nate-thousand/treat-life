@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "treatlife/homepage.schema.json",
+  "title": "Treat Life Homepage",
+  "description": "Structured content schema for the Treat Life promotional homepage. Copy values sourced from sources/treatlife-content.md.",
+  "type": "object",
+  "required": ["meta", "announcementBar", "navigation", "hero", "proofStrip", "products", "brand", "copySystem", "drop", "footer"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string", "const": "Treat Life | Premium Human Grade Dog Treats" },
+        "description": {
+          "type": "string",
+          "const": "Treat Life is a premium lifestyle dog treat brand made with human grade ingredients, modern packaging, and collectible flavor drops for design conscious dog owners."
+        },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [
+            "premium dog treats",
+            "human grade dog treats",
+            "modern dog treats",
+            "designer dog treats",
+            "luxury dog treats",
+            "dog treat brand",
+            "limited dog treat drops"
+          ]
+        }
+      }
+    },
+    "announcementBar": {
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string", "const": "Human Grade. Dog Approved." }
+      }
+    },
+    "navigation": {
+      "type": "object",
+      "required": ["logo", "links", "primaryAction"],
+      "properties": {
+        "logo": { "type": "string", "const": "Treat Life" },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "href"],
+            "properties": {
+              "label": { "type": "string", "enum": ["Treats", "Brand", "Ingredients", "Drop"] },
+              "href": { "type": "string", "pattern": "^#" }
+            }
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "primaryAction": {
+          "type": "object",
+          "required": ["label", "href"],
+          "properties": {
+            "label": { "type": "string", "const": "Join the Drop" },
+            "href": { "type": "string", "const": "#drop" }
+          }
+        }
+      }
+    },
+    "hero": {
+      "type": "object",
+      "required": ["eyebrow", "headline", "subheadline", "primaryButton", "secondaryButton", "image"],
+      "properties": {
+        "eyebrow": { "type": "string", "const": "Premium Dog Treats" },
+        "headline": { "type": "string", "const": "Live the Treat Life." },
+        "subheadline": {
+          "type": "string",
+          "const": "Human grade ingredients. Designed for good dogs. Built for people with good taste."
+        },
+        "primaryButton": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "const": "Shop Treats" },
+            "href": { "type": "string", "const": "#treats" }
+          }
+        },
+        "secondaryButton": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "const": "View Concept" },
+            "href": { "type": "string", "const": "#brand" }
+          }
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "src": { "type": "string" },
+            "alt": { "type": "string", "const": "Treat Life premium packaging with two dogs" }
+          }
+        }
+      }
+    },
+    "proofStrip": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {
+        "id": { "type": "string", "const": "ingredients" },
+        "items": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["title", "copy"],
+            "properties": {
+              "title": { "type": "string" },
+              "copy": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "products": {
+      "type": "object",
+      "required": ["eyebrow", "headline", "intro", "items"],
+      "properties": {
+        "id": { "type": "string", "const": "treats" },
+        "eyebrow": { "type": "string", "const": "Launch Collection" },
+        "headline": { "type": "string", "const": "Three Flavors. Endless Loyalty." },
+        "intro": {
+          "type": "string",
+          "const": "A premium treat system with collectible packaging, flavor specific accents, and a dark shelf ready brand language."
+        },
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "$ref": "#/definitions/product" }
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "required": ["eyebrow", "headline", "body", "image"],
+      "properties": {
+        "id": { "type": "string", "const": "brand" },
+        "eyebrow": { "type": "string", "const": "The Brand" },
+        "headline": { "type": "string", "const": "Designed for People With Good Taste." },
+        "body": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "src": { "type": "string" },
+            "alt": {
+              "type": "string",
+              "const": "Treat Life brand board with packaging, merchandise, and brand copy"
+            }
+          }
+        }
+      }
+    },
+    "copySystem": {
+      "type": "object",
+      "required": ["cards"],
+      "properties": {
+        "cards": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["label", "headline", "supportingCopy"],
+            "properties": {
+              "label": { "type": "string", "enum": ["Front", "Box", "Brand"] },
+              "headline": { "type": "string" },
+              "supportingCopy": { "type": "string" },
+              "featured": { "type": "boolean", "default": false }
+            }
+          }
+        }
+      }
+    },
+    "drop": {
+      "type": "object",
+      "required": ["eyebrow", "headline", "body", "inputPlaceholder", "button", "successMessage"],
+      "properties": {
+        "id": { "type": "string", "const": "drop" },
+        "eyebrow": { "type": "string", "const": "Limited Drops" },
+        "headline": { "type": "string", "const": "First batch. Founding customers." },
+        "body": {
+          "type": "string",
+          "const": "Join the launch list for early access to the first Treat Life flavors, packaging, merchandise, and product drops."
+        },
+        "inputPlaceholder": { "type": "string", "const": "Email address" },
+        "button": { "type": "string", "const": "Notify Me" },
+        "successMessage": {
+          "type": "string",
+          "const": "You are on the list. Welcome to the Treat Life."
+        }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "required": ["logo", "tagline", "links", "social"],
+      "properties": {
+        "logo": { "type": "string", "const": "Treat Life" },
+        "tagline": { "type": "string", "const": "Live the Treat Life." },
+        "links": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Treats", "Brand", "Ingredients", "Drop"] }
+        },
+        "social": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Instagram", "TikTok", "Contact"] }
+        },
+        "disclaimer": {
+          "type": "string",
+          "default": "Concept site. Product claims pending legal review."
+        }
+      }
+    }
+  },
+  "definitions": {
+    "product": {
+      "type": "object",
+      "required": ["name", "flavor", "accent", "accentLabel", "description", "button", "packCopy", "accentToken"],
+      "properties": {
+        "name": { "type": "string", "enum": ["PB & The Jams", "Berry Fresh", "Gold Standard"] },
+        "flavor": { "type": "string" },
+        "accent": { "type": "string" },
+        "accentLabel": { "type": "string" },
+        "description": { "type": "string" },
+        "button": { "type": "string", "const": "View Flavor" },
+        "accentToken": { "type": "string", "enum": ["pb-jams", "berry-fresh", "gold-standard"] },
+        "packCopy": {
+          "type": "object",
+          "required": ["brand", "name", "flavor", "tagline"],
+          "properties": {
+            "brand": { "type": "string", "const": "Treat Life" },
+            "name": { "type": "string" },
+            "flavor": { "type": "string" },
+            "tagline": { "type": "string", "const": "Human Grade Dog Treats" }
+          }
+        }
+      }
+    }
+  }
+}

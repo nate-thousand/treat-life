@@ -1,0 +1,157 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "Treat Life",
+    "version": "1.0.0",
+    "description": "Design tokens for Treat Life — premium lifestyle dog treat brand"
+  },
+  "color": {
+    "black": { "value": "#0d0d0d", "type": "color" },
+    "ink": { "value": "#121212", "type": "color" },
+    "charcoal": { "value": "#1f1f1f", "type": "color" },
+    "charcoal-2": { "value": "#292929", "type": "color" },
+    "gold": { "value": "#d4af37", "type": "color" },
+    "gold-dark": { "value": "#b88b2e", "type": "color" },
+    "cream": { "value": "#f2eee4", "type": "color" },
+    "muted": { "value": "#bdb5a4", "type": "color" },
+    "line": { "value": "rgba(212, 175, 55, 0.32)", "type": "color" },
+    "surface": {
+      "strip": { "value": "#0b0b0b", "type": "color" },
+      "footer": { "value": "#070707", "type": "color" },
+      "input": { "value": "#090909", "type": "color" },
+      "photo": { "value": "#0a0a0a", "type": "color" },
+      "cardLight": { "value": "#171717", "type": "color" },
+      "cardDark": { "value": "#0c0c0c", "type": "color" },
+      "packTop": { "value": "#181818", "type": "color" },
+      "packBottom": { "value": "#060606", "type": "color" },
+      "copyCard": { "value": "#101010", "type": "color" },
+      "copyFeaturedTop": { "value": "#161616", "type": "color" },
+      "dropTop": { "value": "#151515", "type": "color" }
+    },
+    "heroGradient": {
+      "mid": { "value": "#111111", "type": "color" },
+      "end": { "value": "#17140f", "type": "color" }
+    },
+    "alpha": {
+      "gold16": { "value": "rgba(212, 175, 55, 0.16)", "type": "color" },
+      "gold14": { "value": "rgba(212, 175, 55, 0.14)", "type": "color" },
+      "gold12": { "value": "rgba(212, 175, 55, 0.12)", "type": "color" },
+      "gold10": { "value": "rgba(212, 175, 55, 0.10)", "type": "color" },
+      "gold08": { "value": "rgba(212, 175, 55, 0.08)", "type": "color" },
+      "gold05": { "value": "rgba(212, 175, 55, 0.05)", "type": "color" },
+      "gold20": { "value": "rgba(212, 175, 55, 0.20)", "type": "color" },
+      "gold45": { "value": "rgba(212, 175, 55, 0.45)", "type": "color" },
+      "gold30": { "value": "rgba(212, 175, 55, 0.30)", "type": "color" },
+      "gold22": { "value": "rgba(212, 175, 55, 0.22)", "type": "color" },
+      "gold20border": { "value": "rgba(212, 175, 55, 0.20)", "type": "color" },
+      "gold18": { "value": "rgba(212, 175, 55, 0.18)", "type": "color" },
+      "gold15": { "value": "rgba(212, 175, 55, 0.15)", "type": "color" },
+      "navBg": { "value": "rgba(13, 13, 13, 0.92)", "type": "color" },
+      "storyStart": { "value": "rgba(0, 0, 0, 0.88)", "type": "color" },
+      "storyEnd": { "value": "rgba(15, 15, 15, 0.92)", "type": "color" },
+      "cream45": { "value": "rgba(242, 238, 228, 0.45)", "type": "color" },
+      "pink45": { "value": "rgba(169, 74, 100, 0.45)", "type": "color" }
+    },
+    "flavor": {
+      "pb-jams": { "value": "#a94a64", "type": "color", "description": "Dusty Pink — PB & The Jams" },
+      "berry-fresh": { "value": "#8b1f24", "type": "color", "description": "Deep Berry Red — Berry Fresh" },
+      "gold-standard": { "value": "#b88b2e", "type": "color", "description": "Muted Mustard — Gold Standard" }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "display": { "value": "\"Bebas Neue\", Impact, sans-serif", "type": "fontFamily" },
+      "displayAlt": { "value": "Druk, \"Bebas Neue\", Impact, sans-serif", "type": "fontFamily" },
+      "body": { "value": "Inter, ui-sans-serif, system-ui, sans-serif", "type": "fontFamily" },
+      "flavor": { "value": "Georgia, \"Times New Roman\", serif", "type": "fontFamily", "description": "Italic script stand-in for flavor names" }
+    },
+    "fontWeight": {
+      "regular": { "value": "400", "type": "fontWeight" },
+      "medium": { "value": "500", "type": "fontWeight" },
+      "semibold": { "value": "600", "type": "fontWeight" },
+      "bold": { "value": "700", "type": "fontWeight" },
+      "extrabold": { "value": "800", "type": "fontWeight" },
+      "black": { "value": "900", "type": "fontWeight" }
+    },
+    "fontSize": {
+      "xs": { "value": "0.68rem", "type": "dimension" },
+      "sm": { "value": "0.78rem", "type": "dimension" },
+      "base": { "value": "1rem", "type": "dimension" },
+      "lg": { "value": "1.05rem", "type": "dimension" },
+      "xl": { "value": "1.35rem", "type": "dimension" },
+      "2xl": { "value": "1.5rem", "type": "dimension" },
+      "3xl": { "value": "2.2rem", "type": "dimension" },
+      "4xl": { "value": "4rem", "type": "dimension" },
+      "hero": { "value": "clamp(4rem, 10vw, 8.5rem)", "type": "dimension" }
+    },
+    "letterSpacing": {
+      "tight": { "value": "-0.05em", "type": "dimension" },
+      "normal": { "value": "0.01em", "type": "dimension" },
+      "wide": { "value": "0.08em", "type": "dimension" },
+      "wider": { "value": "0.14em", "type": "dimension" },
+      "widest": { "value": "0.16em", "type": "dimension" }
+    },
+    "lineHeight": {
+      "tight": { "value": "0.9", "type": "number" },
+      "snug": { "value": "0.95", "type": "number" },
+      "normal": { "value": "1.55", "type": "number" },
+      "relaxed": { "value": "1.65", "type": "number" },
+      "loose": { "value": "1.75", "type": "number" }
+    }
+  },
+  "spacing": {
+    "xs": { "value": "0.45rem", "type": "dimension" },
+    "sm": { "value": "0.85rem", "type": "dimension" },
+    "md": { "value": "1rem", "type": "dimension" },
+    "lg": { "value": "1.4rem", "type": "dimension" },
+    "xl": { "value": "1.6rem", "type": "dimension" },
+    "2xl": { "value": "2rem", "type": "dimension" },
+    "3xl": { "value": "2.5rem", "type": "dimension" },
+    "section": { "value": "clamp(4rem, 8vw, 7rem)", "type": "dimension" }
+  },
+  "border": {
+    "radius": {
+      "none": { "value": "0", "type": "dimension" },
+      "full": { "value": "999px", "type": "dimension" }
+    },
+    "width": {
+      "thin": { "value": "1px", "type": "dimension" }
+    }
+  },
+  "shadow": {
+    "card": { "value": "0 30px 90px rgba(0, 0, 0, 0.48)", "type": "shadow" },
+    "focus": { "value": "0 0 0 0.25rem rgba(212, 175, 55, 0.15)", "type": "shadow" }
+  },
+  "gradient": {
+    "announcement": {
+      "value": "linear-gradient(90deg, #b88b2e, #d4af37, #b88b2e)",
+      "type": "gradient"
+    },
+    "hero": {
+      "value": "radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.16), transparent 28rem), linear-gradient(90deg, #0b0b0b 0%, #111111 48%, #17140f 100%)",
+      "type": "gradient"
+    }
+  },
+  "component": {
+    "navbar": {
+      "background": { "value": "rgba(13, 13, 13, 0.92)", "type": "color" },
+      "backdropBlur": { "value": "18px", "type": "dimension" }
+    },
+    "button": {
+      "borderRadius": { "value": "{border.radius.none}", "type": "dimension" },
+      "letterSpacing": { "value": "{typography.letterSpacing.wide}", "type": "dimension" },
+      "textTransform": { "value": "uppercase", "type": "string" }
+    }
+  },
+  "naming": {
+    "brand": { "value": "Treat Life", "type": "string" },
+    "flavors": {
+      "pbJams": { "value": "PB & The Jams", "type": "string" },
+      "berryFresh": { "value": "Berry Fresh", "type": "string" },
+      "goldStandard": { "value": "Gold Standard", "type": "string" }
+    },
+    "deprecated": {
+      "goldenFlow": { "value": "Golden Flow", "type": "string", "description": "Do not use — replaced by Gold Standard" }
+    }
+  }
+}

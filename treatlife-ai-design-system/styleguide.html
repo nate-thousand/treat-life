@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treat Life Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="sg-page">
+  <div class="container">
+    <header class="sg-header">
+      <p class="eyebrow">Design System</p>
+      <h1 class="hero-title sg-title">Treat Life Style Guide</h1>
+      <p class="hero-copy">Foundations, components, and voice rules for the Treat Life POC. Tokens: <code>tokens/treatlife.tokens.json</code></p>
+      <p class="sg-back"><a href="index.html">← Back to homepage</a></p>
+    </header>
+
+    <section class="sg-section">
+      <h2>Brand Overview</h2>
+      <div class="sg-prose">
+        <p>Treat Life is a premium lifestyle dog brand built for design-conscious dog owners. This is not another pet food company.</p>
+        <p>Dog treats good enough to leave on the counter instead of hiding in the pantry.</p>
+        <p><strong>Mission:</strong> Create premium dog treats worthy of premium homes.</p>
+        <p><strong>Positioning:</strong> Premium nutrition + streetwear energy + modern design + collectibility + lifestyle.</p>
+        <p><strong>Reference brands:</strong> Kith, Apple, Supreme, Liquid Death, Aesop — not PetSmart.</p>
+        <p><strong>Product:</strong> Human grade dog treats — three launch flavors with flavor-specific accent colors.</p>
+        <p><strong>Tagline:</strong> Live the Treat Life.</p>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Target Customer</h2>
+      <div class="sg-prose">
+        <p>Not every dog owner. We build for people who already appreciate thoughtful design and premium consumer goods.</p>
+        <p>Their dog is an extension of their lifestyle.</p>
+      </div>
+      <p class="sg-type-label">Brand affinities</p>
+      <div class="sg-tags">
+        <span class="sg-tag">Nike</span>
+        <span class="sg-tag">Kith</span>
+        <span class="sg-tag">Supreme</span>
+        <span class="sg-tag">New Balance</span>
+        <span class="sg-tag">Apple</span>
+        <span class="sg-tag">Aimé Leon Dore</span>
+        <span class="sg-tag">Leica</span>
+        <span class="sg-tag">Aesop</span>
+        <span class="sg-tag">Fellow</span>
+        <span class="sg-tag">On Running</span>
+      </div>
+      <p class="sg-type-label">What they buy</p>
+      <div class="sg-tags">
+        <span class="sg-tag">Specialty coffee</span>
+        <span class="sg-tag">Vinyl</span>
+        <span class="sg-tag">Premium clothing</span>
+        <span class="sg-tag">Modern furniture</span>
+        <span class="sg-tag">Designer accessories</span>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Core Brand Values</h2>
+      <div class="sg-tags">
+        <span class="sg-tag sg-tag-gold">Premium</span>
+        <span class="sg-tag sg-tag-gold">Minimal</span>
+        <span class="sg-tag sg-tag-gold">Modern</span>
+        <span class="sg-tag sg-tag-gold">Confident</span>
+        <span class="sg-tag sg-tag-gold">Authentic</span>
+        <span class="sg-tag sg-tag-gold">Collectible</span>
+        <span class="sg-tag sg-tag-gold">Timeless</span>
+        <span class="sg-tag sg-tag-gold">Designed</span>
+        <span class="sg-tag sg-tag-gold">Human Grade</span>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Color Tokens</h2>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch-color sg-swatch-black"></div><div class="sg-swatch-label">--tl-black</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color sg-swatch-ink"></div><div class="sg-swatch-label">--tl-ink</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color sg-swatch-gold"></div><div class="sg-swatch-label">--tl-gold</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color sg-swatch-cream"></div><div class="sg-swatch-label">--tl-cream</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color sg-swatch-muted"></div><div class="sg-swatch-label">--tl-muted</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color sg-swatch-pb"></div><div class="sg-swatch-label">--tl-pink · PB &amp; The Jams</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color sg-swatch-berry"></div><div class="sg-swatch-label">--tl-berry · Berry Fresh</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color sg-swatch-mustard"></div><div class="sg-swatch-label">--tl-mustard · Gold Standard</div></div>
+      </div>
+      <p class="sg-note">Hex values live in <code>tokens/treatlife.tokens.json</code>. Swatches read from <code>theme/treatlife.theme.css</code>.</p>
+    </section>
+
+    <section class="sg-section">
+      <h2>Typography</h2>
+      <div class="sg-type-sample">
+        <p class="sg-type-label">Display — Bebas Neue</p>
+        <p class="hero-title sg-display-sample">Live the Treat Life.</p>
+      </div>
+      <div class="sg-type-sample">
+        <p class="sg-type-label">Eyebrow — uppercase, gold, wide tracking</p>
+        <p class="eyebrow">Premium Dog Treats</p>
+      </div>
+      <div class="sg-type-sample">
+        <p class="sg-type-label">Body — Inter</p>
+        <p class="story-copy">Human grade ingredients. Designed for good dogs. Built for people with good taste.</p>
+      </div>
+      <div class="sg-type-sample">
+        <p class="sg-type-label">Flavor script — Georgia italic (packaging stand-in)</p>
+        <p class="sg-flavor-script">PB &amp; The Jams</p>
+      </div>
+      <ul class="sg-list">
+        <li>Display: Druk, Bebas Neue, Monument Extended (Bebas Neue in POC)</li>
+        <li>Body: Inter, Neue Haas, Suisse (Inter in POC)</li>
+        <li>Flavor names: premium brush script — handwritten, not cartoon (Georgia italic stand-in)</li>
+        <li>Display headlines: uppercase, tight line-height</li>
+        <li>UI chrome: uppercase buttons, wide letter-spacing</li>
+        <li>Body: sentence case, muted gray on dark surfaces</li>
+        <li>No white background sections</li>
+      </ul>
+    </section>
+
+    <section class="sg-section">
+      <h2>Logo Direction</h2>
+      <ul class="sg-list">
+        <li>Large typography with a minimal icon — single premium mark</li>
+        <li>Preferred: shield + paw</li>
+        <li>No cartoon dogs, clip art, or excessive laurels</li>
+        <li>No crowns unless subtle</li>
+      </ul>
+      <div class="sg-component-preview sg-logo-preview">
+        <span class="tl-shield" aria-hidden="true">●</span>
+        <span class="tl-logo">Treat Life</span>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Photography Direction</h2>
+      <div class="sg-rules-grid">
+        <div class="sg-rules-card">
+          <h3>Do</h3>
+          <ul class="sg-list">
+            <li>Editorial, luxury, fashion energy</li>
+            <li>Hard shadows, natural light, warm tones</li>
+            <li>Luxury food styling</li>
+            <li>Surfaces: concrete, travertine, walnut, black marble</li>
+          </ul>
+        </div>
+        <div class="sg-rules-card sg-rules-forbidden">
+          <h3>Do not</h3>
+          <ul class="sg-list">
+            <li>PetSmart-style pet aisle photography</li>
+            <li>Cartoon or overly cute dog stock</li>
+            <li>Farmhouse or rustic staging</li>
+            <li>Busy, cluttered product shots</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sg-type-label">Reference assets</p>
+      <div class="sg-photo-grid">
+        <figure class="sg-photo-card">
+          <img src="assets/hero-lifestyle.png" alt="Treat Life hero lifestyle shot with golden retriever and french bulldog">
+          <figcaption>Hero — lifestyle + packaging</figcaption>
+        </figure>
+        <figure class="sg-photo-card">
+          <img src="assets/flavor-pb-jams.png" alt="PB and The Jams product photography on concrete">
+          <figcaption>PB &amp; The Jams — concrete surface</figcaption>
+        </figure>
+        <figure class="sg-photo-card">
+          <img src="assets/flavor-berry-fresh.png" alt="Berry Fresh product photography on marble">
+          <figcaption>Berry Fresh — marble surface</figcaption>
+        </figure>
+        <figure class="sg-photo-card">
+          <img src="assets/flavor-gold-standard.png" alt="Gold Standard product photography with sweet potato and honey">
+          <figcaption>Gold Standard — sweet potato + honey</figcaption>
+        </figure>
+        <figure class="sg-photo-card">
+          <img src="assets/brand-board.png" alt="Treat Life brand board with packaging and merchandise">
+          <figcaption>Brand board — identity + products</figcaption>
+        </figure>
+        <figure class="sg-photo-card">
+          <img src="assets/brand-board-unboxing.png" alt="Treat Life unboxing and collateral board">
+          <figcaption>Unboxing — box interior + collateral</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Brand Visual Reference</h2>
+      <p class="sg-note">Brand board and typography/color system exploration.</p>
+      <div class="sg-brand-visual">
+        <img src="assets/brand-board.png" alt="Treat Life brand board with logo, products, and strategy">
+      </div>
+      <div class="sg-brand-visual" style="margin-top: 1rem;">
+        <img src="assets/style-guide.png" alt="Treat Life style guide with logo, typography, and colors">
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Packaging Principles</h2>
+      <ul class="sg-list">
+        <li>Soft-touch matte pouch</li>
+        <li>Real metallic gold foil</li>
+        <li>Emboss and deboss</li>
+        <li>Spot UV accents</li>
+        <li>Large typography, minimal information hierarchy</li>
+        <li>Lots of whitespace — shelf-ready, collectible presence</li>
+      </ul>
+      <div class="sg-packaging-copy">
+        <div class="sg-pack-block">
+          <span class="copy-label">Front</span>
+          <p>Treat Life · Flavor Name · Human Grade Dog Treats</p>
+        </div>
+        <div class="sg-pack-block">
+          <span class="copy-label">Side</span>
+          <p>Live the Treat Life.</p>
+        </div>
+        <div class="sg-pack-block">
+          <span class="copy-label">Back</span>
+          <p>Reward Better.</p>
+        </div>
+        <div class="sg-pack-block sg-pack-block-featured">
+          <span class="copy-label">Box Interior</span>
+          <p>Good Dogs. Good Treats. Good Taste.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Buttons</h2>
+      <div class="sg-component-preview sg-flex-row">
+        <a href="index.html#treats" class="btn btn-gold btn-lg">Shop Treats</a>
+        <a href="index.html#brand" class="btn btn-ghost btn-lg">View Concept</a>
+        <a href="index.html#drop" class="btn btn-outline-gold">Join the Drop</a>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Proof Strip</h2>
+      <div class="sg-component-preview sg-component-preview-wide">
+        <div class="value-grid sg-proof-demo">
+          <div class="value-item">
+            <div class="value-icon" aria-hidden="true">◎</div>
+            <h3>Human Grade</h3>
+            <p>Real ingredients. Real benefits.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-icon" aria-hidden="true">◇</div>
+            <h3>Simple Ingredient Standard</h3>
+            <p>No junky fillers. No unnecessary extras. No compromises.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-icon" aria-hidden="true">●</div>
+            <h3>Dog Approved</h3>
+            <p>Crafted for dogs. Designed for modern homes.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-icon" aria-hidden="true">✚</div>
+            <h3>Premium Batch Standard</h3>
+            <p>Built for quality, consistency, and strong shelf presence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Product Cards</h2>
+      <div class="sg-component-preview sg-component-preview-wide">
+        <div class="product-grid sg-product-demo">
+          <article class="product-card product-pb">
+            <div class="product-accent"></div>
+            <div class="product-pack product-pack-photo">
+              <img src="assets/flavor-pb-jams.png" alt="Treat Life PB and The Jams packaging">
+            </div>
+            <div class="product-body">
+              <span class="accent-label">Dusty Pink Accent</span>
+              <h4>PB &amp; The Jams</h4>
+              <p>Peanut butter, blueberry, and hip hop energy. The playful flavor in the launch set.</p>
+              <a href="index.html#flavor-pb-jams" class="btn btn-card">View Flavor</a>
+            </div>
+          </article>
+
+          <article class="product-card product-berry">
+            <div class="product-accent"></div>
+            <div class="product-pack product-pack-photo">
+              <img src="assets/flavor-berry-fresh.png" alt="Treat Life Berry Fresh packaging">
+            </div>
+            <div class="product-body">
+              <span class="accent-label">Deep Berry Accent</span>
+              <h4>Berry Fresh</h4>
+              <p>Bright, clean, and energetic. A fruit forward everyday treat with premium visual impact.</p>
+              <a href="index.html#flavor-berry-fresh" class="btn btn-card">View Flavor</a>
+            </div>
+          </article>
+
+          <article class="product-card product-gold">
+            <div class="product-accent"></div>
+            <div class="product-pack product-pack-photo">
+              <img src="assets/flavor-gold-standard.png" alt="Treat Life Gold Standard packaging">
+            </div>
+            <div class="product-body">
+              <span class="accent-label">Muted Mustard Accent</span>
+              <h4>Gold Standard</h4>
+              <p>Sweet potato and honey with a classic premium profile. The flagship flavor.</p>
+              <a href="index.html#flavor-gold-standard" class="btn btn-card">View Flavor</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Flavor Collection</h2>
+      <div class="sg-flavor-grid">
+        <article class="sg-flavor-card sg-flavor-pb">
+          <span class="accent-label">Dusty Pink</span>
+          <h3>PB &amp; The Jams</h3>
+          <p>Peanut Butter + Blueberry</p>
+          <p class="sg-flavor-mood">Playful · Hip hop · Music</p>
+        </article>
+        <article class="sg-flavor-card sg-flavor-berry">
+          <span class="accent-label">Deep Berry Red</span>
+          <h3>Berry Fresh</h3>
+          <p>Strawberry + Banana</p>
+          <p class="sg-flavor-mood">Bright · Fresh · Energetic</p>
+        </article>
+        <article class="sg-flavor-card sg-flavor-gold">
+          <span class="accent-label">Muted Mustard</span>
+          <h3>Gold Standard</h3>
+          <p>Sweet Potato + Honey</p>
+          <p class="sg-flavor-mood">Classic · Premium · Craft</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Drop Form</h2>
+      <div class="drop-panel text-center">
+        <p class="eyebrow">Limited Drops</p>
+        <h2>First batch. Founding customers.</h2>
+        <p>Join the launch list for early access.</p>
+        <form class="drop-form" id="dropForm">
+          <label class="sr-only" for="sg-drop-email">Email address</label>
+          <input id="sg-drop-email" type="email" class="form-control" placeholder="Email address" required>
+          <button class="btn btn-gold btn-lg" type="submit">Notify Me</button>
+        </form>
+        <p class="drop-success" id="dropSuccess" role="status" hidden>
+          You are on the list. Welcome to the Treat Life.
+        </p>
+      </div>
+      <p class="sg-note">POC only — form shows success state locally. No backend or email service connected yet.</p>
+    </section>
+
+    <section class="sg-section">
+      <h2>Voice Rules</h2>
+      <div class="sg-rules-grid">
+        <div class="sg-rules-card">
+          <h3>Use</h3>
+          <ul class="sg-list">
+            <li>Reward Better.</li>
+            <li>Live the Treat Life.</li>
+            <li>Human Grade. Dog Approved.</li>
+            <li>Good Dogs. Good Treats. Good Taste.</li>
+            <li>Designed for People With Good Taste.</li>
+            <li>Crafted for Good Dogs.</li>
+          </ul>
+        </div>
+        <div class="sg-rules-card sg-rules-forbidden">
+          <h3>Avoid</h3>
+          <ul class="sg-list">
+            <li>Woof / Bark / Pawsome</li>
+            <li>Fur baby language</li>
+            <li>Cute pet puns</li>
+            <li>Pet store baby talk</li>
+            <li>Farmhouse / rustic tone</li>
+            <li>Cartoon energy</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Approved Taglines</h2>
+      <ul class="sg-list sg-list-approved">
+        <li><strong>Live the Treat Life.</strong> — primary</li>
+        <li>Reward Better.</li>
+        <li>Crafted for Good Dogs.</li>
+        <li>Human Grade. Dog Approved.</li>
+        <li>Designed for People With Good Taste.</li>
+        <li>Good Dogs. Good Treats. Good Taste.</li>
+        <li>Real Ingredients. Real Loyalty.</li>
+      </ul>
+      <p class="sg-note">Secondary taglines from brand handoff — use sparingly, not all at once.</p>
+    </section>
+
+    <section class="sg-section">
+      <h2>Approved Product Names</h2>
+      <ul class="sg-list sg-list-approved">
+        <li><strong>Treat Life</strong> — brand name</li>
+        <li><strong>PB &amp; The Jams</strong> — Peanut Butter + Blueberry</li>
+        <li><strong>Berry Fresh</strong> — Strawberry + Banana</li>
+        <li><strong>Gold Standard</strong> — Sweet Potato + Honey</li>
+      </ul>
+    </section>
+
+    <section class="sg-section">
+      <h2>Forbidden Language</h2>
+      <div class="sg-callout sg-callout-warn">
+        <p><strong>Do not use:</strong> Golden Flow (replaced by Gold Standard)</p>
+      </div>
+      <ul class="sg-list">
+        <li>Do not use unverified regulated claims on public surfaces</li>
+        <li>Do not add Made in USA, no artificial, or AAFCO language until legal review</li>
+        <li>Do not use pet-aisle clichés listed in Voice Rules</li>
+      </ul>
+    </section>
+
+    <section class="sg-section">
+      <h2>Claim Review Notes</h2>
+      <div class="sg-callout">
+        <p>This is a concept site. Use concept language only until formulas, manufacturer, packaging requirements, and legal review are complete.</p>
+      </div>
+      <p class="sg-type-label">Verify before launch</p>
+      <ul class="sg-list">
+        <li>Human grade</li>
+        <li>Made in USA</li>
+        <li>No artificial ingredients / no fillers</li>
+        <li>Ingredient benefits</li>
+        <li>Manufacturing partner</li>
+        <li>Nutritional and guaranteed analysis</li>
+        <li>Feeding guidelines</li>
+        <li>AAFCO, FDA, and state pet food label requirements</li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+/**
+ * Treat Life Theme
+ * SOURCE OF TRUTH: tokens/treatlife.tokens.json
+ * Sync: update JSON first, then mirror values here as --tl-* variables.
+ * styles.css must use var(--tl-*) only — no raw hex outside this file.
+ */
+
+:root {
+  /* Color — core */
+  --tl-black: #0d0d0d;
+  --tl-ink: #121212;
+  --tl-charcoal: #1f1f1f;
+  --tl-charcoal-2: #292929;
+  --tl-gold: #d4af37;
+  --tl-gold-dark: #b88b2e;
+  --tl-cream: #f2eee4;
+  --tl-muted: #bdb5a4;
+  --tl-line: rgba(212, 175, 55, 0.32);
+
+  /* Color — flavor accents */
+  --tl-pink: #a94a64;
+  --tl-berry: #8b1f24;
+  --tl-mustard: #b88b2e;
+
+  /* Color — surfaces */
+  --tl-surface-strip: #0b0b0b;
+  --tl-surface-footer: #070707;
+  --tl-surface-input: #090909;
+  --tl-surface-photo: #0a0a0a;
+  --tl-surface-card-light: #171717;
+  --tl-surface-card-dark: #0c0c0c;
+  --tl-surface-pack-top: #181818;
+  --tl-surface-pack-bottom: #060606;
+  --tl-surface-copy: #101010;
+  --tl-surface-copy-featured-top: #161616;
+  --tl-surface-drop-top: #151515;
+  --tl-hero-grad-mid: #111111;
+  --tl-hero-grad-end: #17140f;
+
+  /* Color — alpha */
+  --tl-alpha-gold-16: rgba(212, 175, 55, 0.16);
+  --tl-alpha-gold-14: rgba(212, 175, 55, 0.14);
+  --tl-alpha-gold-12: rgba(212, 175, 55, 0.12);
+  --tl-alpha-gold-10: rgba(212, 175, 55, 0.10);
+  --tl-alpha-gold-08: rgba(212, 175, 55, 0.08);
+  --tl-alpha-gold-05: rgba(212, 175, 55, 0.05);
+  --tl-alpha-gold-20: rgba(212, 175, 55, 0.20);
+  --tl-alpha-gold-45: rgba(212, 175, 55, 0.45);
+  --tl-alpha-gold-30: rgba(212, 175, 55, 0.30);
+  --tl-alpha-gold-22: rgba(212, 175, 55, 0.22);
+  --tl-alpha-gold-18: rgba(212, 175, 55, 0.18);
+  --tl-alpha-gold-15: rgba(212, 175, 55, 0.15);
+  --tl-alpha-nav-bg: rgba(13, 13, 13, 0.92);
+  --tl-alpha-story-start: rgba(0, 0, 0, 0.88);
+  --tl-alpha-story-end: rgba(15, 15, 15, 0.92);
+  --tl-alpha-cream-45: rgba(242, 238, 228, 0.45);
+  --tl-alpha-pink-45: rgba(169, 74, 100, 0.45);
+
+  /* Typography */
+  --tl-font-display: "Bebas Neue", Impact, sans-serif;
+  --tl-font-display-alt: Druk, "Bebas Neue", Impact, sans-serif;
+  --tl-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tl-font-flavor: Georgia, "Times New Roman", serif;
+
+  /* Spacing */
+  --tl-space-section: clamp(4rem, 8vw, 7rem);
+
+  /* Borders & shadows */
+  --tl-radius-none: 0;
+  --tl-radius-full: 999px;
+  --tl-shadow-card: 0 30px 90px rgba(0, 0, 0, 0.48);
+  --tl-shadow-focus: 0 0 0 0.25rem var(--tl-alpha-gold-15);
+
+  /* Gradients */
+  --tl-gradient-announcement: linear-gradient(90deg, var(--tl-gold-dark), var(--tl-gold), var(--tl-gold-dark));
+  --tl-gradient-hero: radial-gradient(circle at 80% 20%, var(--tl-alpha-gold-16), transparent 28rem),
+    linear-gradient(90deg, var(--tl-surface-strip) 0%, var(--tl-hero-grad-mid) 48%, var(--tl-hero-grad-end) 100%);
+  --tl-gradient-product-bg: radial-gradient(circle at 50% 0%, var(--tl-alpha-gold-12), transparent 30rem);
+  --tl-gradient-drop-bg: radial-gradient(circle at 50% 0%, var(--tl-alpha-gold-14), transparent 28rem);
+  --tl-gradient-card: linear-gradient(180deg, var(--tl-surface-card-light), var(--tl-surface-card-dark));
+  --tl-gradient-pack: linear-gradient(160deg, var(--tl-alpha-gold-12), transparent 42%),
+    linear-gradient(180deg, var(--tl-surface-pack-top), var(--tl-surface-pack-bottom));
+  --tl-gradient-copy-card: radial-gradient(circle at 100% 0%, var(--tl-alpha-gold-10), transparent 16rem);
+  --tl-gradient-copy-featured: radial-gradient(circle at 50% 0%, var(--tl-alpha-gold-20), transparent 18rem),
+    linear-gradient(180deg, var(--tl-surface-copy-featured-top), var(--tl-surface-photo));
+  --tl-gradient-drop-panel: linear-gradient(180deg, var(--tl-surface-drop-top), var(--tl-surface-photo));
+  --tl-gradient-story: linear-gradient(90deg, var(--tl-alpha-story-start), var(--tl-alpha-story-end));
+  --tl-gradient-hero-grid: linear-gradient(var(--tl-alpha-gold-05) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tl-alpha-gold-05) 1px, transparent 1px);
+}
+
+/* Style guide — token swatches (read from theme vars) */
+.sg-swatch-black { background: var(--tl-black); }
+.sg-swatch-ink { background: var(--tl-ink); }
+.sg-swatch-gold { background: var(--tl-gold); }
+.sg-swatch-cream { background: var(--tl-cream); }
+.sg-swatch-muted { background: var(--tl-muted); }
+.sg-swatch-pb { background: var(--tl-pink); }
+.sg-swatch-berry { background: var(--tl-berry); }
+.sg-swatch-mustard { background: var(--tl-mustard); }
+
+/* Base utilities */
+.tl-theme {
+  background: var(--tl-black);
+  color: var(--tl-cream);
+  font-family: var(--tl-font-body);
+  letter-spacing: 0.01em;
+}
+
+.tl-display {
+  font-family: var(--tl-font-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.tl-eyebrow {
+  color: var(--tl-gold);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tl-body-muted {
+  color: var(--tl-muted);
+  line-height: 1.75;
+}
+
+.tl-btn {
+  border-radius: var(--tl-radius-none);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tl-btn-gold {
+  background: var(--tl-gold);
+  border: 1px solid var(--tl-gold);
+  color: var(--tl-black);
+}
+
+.tl-btn-gold:hover {
+  background: var(--tl-gold-dark);
+  border-color: var(--tl-gold-dark);
+  color: var(--tl-black);
+}
+
+.tl-btn-ghost {
+  border: 1px solid var(--tl-line);
+  color: var(--tl-gold);
+}
+
+.tl-btn-ghost:hover {
+  background: var(--tl-gold);
+  border-color: var(--tl-gold);
+  color: var(--tl-black);
+}
+
+.tl-surface-ink {
+  background: var(--tl-ink);
+}
+
+.tl-border-gold {
+  border: 1px solid var(--tl-line);
+}
+
+.tl-card {
+  background: var(--tl-gradient-card);
+  border: 1px solid var(--tl-alpha-gold-22);
+}
+
+.tl-accent-pb { --tl-accent: var(--tl-pink); }
+.tl-accent-berry { --tl-accent: var(--tl-berry); }
+.tl-accent-gold { --tl-accent: var(--tl-mustard); }
+
+.tl-accent-bar {
+  background: var(--tl-accent);
+  height: 0.55rem;
+}
+
+.tl-input {
+  background: var(--tl-surface-input);
+  border: 1px solid var(--tl-alpha-gold-30);
+  border-radius: var(--tl-radius-none);
+  color: var(--tl-cream);
+}
+
+.tl-input:focus {
+  border-color: var(--tl-gold);
+  box-shadow: var(--tl-shadow-focus);
+  color: var(--tl-cream);
+}
+
+.tl-input::placeholder {
+  color: var(--tl-alpha-cream-45);
+}
