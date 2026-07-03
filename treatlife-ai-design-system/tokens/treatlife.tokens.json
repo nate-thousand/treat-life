@@ -3,7 +3,18 @@
   "meta": {
     "name": "Treat Life",
     "version": "1.0.0",
-    "description": "Design tokens for Treat Life — premium lifestyle dog treat brand"
+    "description": "Design tokens for Treat Life — premium lifestyle dog treat brand",
+    "categories": {
+      "colors": "color",
+      "typography": "typography",
+      "spacing": "spacing",
+      "radius": "border.radius",
+      "shadows": "shadow",
+      "borders": "border.width",
+      "gradients": "gradient",
+      "component": "component",
+      "naming": "naming"
+    }
   },
   "color": {
     "black": { "value": "#0d0d0d", "type": "color" },

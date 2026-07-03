@@ -1,34 +1,8 @@
 /**
- * Treat Life — minimal client JS (POC)
- *
- * Scope:
- *   1. Mobile nav toggle (only when Bootstrap is NOT handling it)
- *   2. Fake drop-form submit with success state
- *   3. Brand concept switcher (name + tagline only)
- *
- * Remove or replace when wiring Formspree, ConvertKit, Shopify, etc.
+ * Treat Life — client JS (POC)
  */
 (function () {
   "use strict";
-
-  var CONCEPT_STORAGE_KEY = "tl-brand-concept";
-  var DEFAULT_CONCEPT = "treatLife";
-  var PAGE_TITLE_SUFFIX = " | Premium Human Grade Dog Treats";
-
-  var concepts = {
-    biggieBones: {
-      name: "Biggie Bones Treat Co.",
-      tagline: "Living That Treat Life."
-    },
-    treatLife: {
-      name: "Treat Life",
-      tagline: "Reward Better."
-    },
-    loyalSupply: {
-      name: "Loyal Supply Co.",
-      tagline: "Built for Good Dogs."
-    }
-  };
 
   function bootstrapHandlesNav() {
     return (
@@ -62,38 +36,51 @@
     });
   }
 
-  function getStoredConceptId() {
-    try {
-      var stored = localStorage.getItem(CONCEPT_STORAGE_KEY);
-      return concepts[stored] ? stored : DEFAULT_CONCEPT;
-    } catch (error) {
-      return DEFAULT_CONCEPT;
+  function initProductPageHandlers() {
+    var addBtn = document.querySelector("[data-pdp-add-to-cart]");
+    var buyBtn = document.querySelector("[data-pdp-buy-now]");
+    var success = document.getElementById("pdpActionSuccess");
+    if (!success) return;
+
+    var copy = window.TL_CONFIG.copy.productPage;
+
+    if (addBtn) {
+      addBtn.onclick = function () {
+        success.textContent = copy.cartSuccess;
+        success.hidden = false;
+      };
+    }
+
+    if (buyBtn) {
+      buyBtn.onclick = function () {
+        success.textContent = copy.buyNowSuccess;
+        success.hidden = false;
+      };
     }
   }
 
+  window.initProductPageHandlers = initProductPageHandlers;
+
   function applyConcept(conceptId) {
-    var concept = concepts[conceptId];
-    if (!concept) return;
+    var brand = window.TL_CONFIG.getBrand(conceptId);
+    if (!brand) return;
 
-    document.querySelectorAll("[data-brand-name]").forEach(function (el) {
-      el.textContent = concept.name;
-    });
+    var product = document.querySelector("[data-product-root]")
+      ? window.TL_CONFIG.getProductFromQuery()
+      : null;
 
-    document.querySelectorAll("[data-brand-tagline]").forEach(function (el) {
-      el.textContent = concept.tagline;
-    });
+    try {
+      localStorage.setItem(window.TL_CONFIG.defaults.storageKey, conceptId);
+    } catch (error) {
+      /* ignore */
+    }
 
-    document.title = concept.name + PAGE_TITLE_SUFFIX;
+    window.TL_RENDER.applyBrand(brand, product);
+    window.TL_RENDER.applyImages(conceptId);
 
     var select = document.getElementById("conceptSelect");
     if (select && select.value !== conceptId) {
       select.value = conceptId;
-    }
-
-    try {
-      localStorage.setItem(CONCEPT_STORAGE_KEY, conceptId);
-    } catch (error) {
-      /* ignore */
     }
   }
 
@@ -104,18 +91,34 @@
     panel.className = "concept-switcher";
     panel.setAttribute("aria-label", "Brand concept preview");
 
+    var optionsHtml = "";
+    var conceptIds = Object.keys(window.TL_CONFIG.concepts);
+    var labels = {
+      biggieBones: "Biggie Bones",
+      treatLife: "Treat Life",
+      treatKings: "Treat Kings"
+    };
+
+    for (var i = 0; i < conceptIds.length; i += 1) {
+      var id = conceptIds[i];
+      optionsHtml +=
+        '<option value="' +
+        id +
+        '">' +
+        (labels[id] || window.TL_CONFIG.concepts[id].name) +
+        "</option>";
+    }
+
     panel.innerHTML =
       '<label class="concept-switcher-label" for="conceptSelect">Concept</label>' +
       '<select id="conceptSelect" class="concept-switcher-select">' +
-      '<option value="biggieBones">Biggie Bones</option>' +
-      '<option value="treatLife">Treat Life</option>' +
-      '<option value="loyalSupply">Loyal Supply</option>' +
+      optionsHtml +
       "</select>";
 
     document.body.appendChild(panel);
 
     var select = document.getElementById("conceptSelect");
-    var activeId = getStoredConceptId();
+    var activeId = window.TL_CONFIG.getStoredConceptId();
 
     select.value = activeId;
     applyConcept(activeId);
@@ -127,5 +130,6 @@
 
   initNavToggle();
   initDropForm();
+  initProductPageHandlers();
   initConceptSwitcher();
 })();

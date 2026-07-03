@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product | Treat Life</title>
+  <meta name="description" content="">
+  <meta property="og:image" content="" data-brand-social-preview>
+  <link rel="icon" href="" data-brand-favicon>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top" data-product-root>
+  <div class="announcement-bar text-center" data-copy-announcement></div>
+
+  <header class="site-nav">
+    <div class="container">
+      <a class="tl-logo" href="index.html">
+        <span class="tl-shield" aria-hidden="true">●</span>
+        <span data-brand-name></span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation">
+        ☰
+      </button>
+
+      <div class="nav-menu" id="mainNav" data-nav-menu>
+        <ul class="nav-links" data-mount-nav-links></ul>
+        <a href="index.html#drop" class="btn btn-outline-gold" data-copy-nav-cta></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pdp-section section-pad" data-mount-pdp></section>
+
+    <section class="pdp-related section-pad" data-pdp-related-section hidden>
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 data-copy-pdp-related-headline></h2>
+        </div>
+        <div class="product-grid" data-mount-related-products></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="tl-logo footer-logo" data-brand-name></div>
+          <p data-brand-tagline></p>
+        </div>
+        <div class="footer-links" data-mount-footer-links></div>
+      </div>
+      <p class="footer-note" data-copy-footer-disclaimer></p>
+    </div>
+  </footer>
+
+  <script src="config/images.js"></script>
+  <script src="config/products.js"></script>
+  <script src="config/copy.js"></script>
+  <script src="config/brand.concepts.js"></script>
+  <script src="config/index.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/render.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

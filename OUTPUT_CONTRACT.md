@@ -1,46 +1,62 @@
 # Treat Life Output Contract
 
-Version: 1.1  
+Version: 1.2  
 Applies to: AI agents, contributors, and generated web surfaces
 
 **Hub:** `treatlife-ai-design-system/`  
-**Scope:** `POC_SCOPE.md`
+**Scope:** `POC_SCOPE.md`  
+**Roadmap:** `ROADMAP.md`
 
 ---
 
 ## 1. Project intent
 
-Treat Life is a **proof-of-concept** for a premium lifestyle **dog treat** brand.
+Treat Life is a **proof-of-concept** for a premium lifestyle **dog treat** brand platform.
 
 | In scope | Out of scope |
 |----------|--------------|
 | Static HTML/CSS/JS in design system hub | React, Next.js, build pipelines |
-| Tokens + style guide | Shopify, cart, checkout |
-| Concept copy | Final regulated product claims |
-| Fake email capture (`main.js`) | Backend, database, analytics |
+| Tokens + style guide | Shopify, real cart, checkout |
+| Configuration-driven copy + products | Final regulated product claims |
+| Three brand concepts + asset switching | Backend, database, analytics |
+| Fake email capture + fake PDP actions | External form services (yet) |
 
 ---
 
 ## 2. Source of truth (read order)
 
-1. `sources/treatlife-content.md`
-2. `sources/treatlife-brand-handoff.md`
-3. `tokens/treatlife.tokens.json`
-4. `theme/treatlife.theme.css`
-5. `components/component-rules.md`
-6. `pages/homepage.schema.json`
-7. `../POC_SCOPE.md`
+1. `config/copy.js` — live marketing copy
+2. `config/products.js` — product + PDP data
+3. `config/images.js` — per-concept image sets
+4. `config/brand.concepts.js` — brand identity
+5. `sources/treatlife-content.md` — copy reference / lock
+6. `sources/treatlife-brand-handoff.md`
+7. `tokens/treatlife.tokens.json`
+8. `theme/treatlife.theme.css`
+9. `components/component-rules.md`
+10. `pages/homepage.schema.json`
+11. `../POC_SCOPE.md`
 
-**Deploy output:** `treatlife-ai-design-system/index.html` (+ `styleguide.html`, `styles.css`, `main.js`)
+**Deploy output:** `index.html`, `product.html`, `styleguide.html`, `styles.css`, `config/`, `js/`, `main.js`, `assets/`
 
 ---
 
 ## 3. Stack requirements
 
 - Vanilla HTML/CSS/JS only
-- One JS file: `main.js` (nav toggle if Bootstrap absent + fake drop form)
+- Config layer: `config/*.js`
+- Render layer: `js/render.js`, `js/components.js`
+- Behavior: `main.js` (nav, forms, concept switcher)
 - No smooth scroll JS, scroll-spy, animations, libraries
 - Dark surfaces only — use `--tl-*` tokens
+
+### Configuration architecture
+
+```
+Design System → Brand Config → Marketing Copy → Product Data → Rendered Website
+```
+
+Components consume `TL_CONFIG`. Never hardcode copy, product data, or image paths in HTML.
 
 ### Token sync workflow
 
@@ -50,15 +66,21 @@ Treat Life is a **proof-of-concept** for a premium lifestyle **dog treat** brand
 4. Style guide swatches use `.sg-swatch-*` classes from theme — no inline hex
 5. Run `prompts/audit-homepage.md` before shipping
 
-**Asset drift:** Concept renders in `assets/` may contradict `sources/treatlife-content.md`. Content wins for UI copy. See `assets/README.md`.
+**Asset drift:** Concept renders in `assets/{concept}/` may contradict `sources/treatlife-content.md`. Content wins for UI copy. See `assets/README.md`.
 
 ---
 
-## 4. Homepage structure
+## 4. Page structure
 
-1. Announcement bar → Navbar → Hero → Proof strip → Products → Brand → Copy system → Drop → Footer
+### Homepage
 
-Balanced messaging: lifestyle headline, treats clear in subheadline + hero image.
+Announcement bar → Navbar → Hero → Proof strip → Products → Brand → Copy system → Drop → Footer
+
+Hero headline = active brand tagline (`data-brand-tagline`). Subheadline and body copy from `config/copy.js`.
+
+### Product detail
+
+`product.html?id=flavor-pb-jams` — rendered from `config/products.js` + `config/copy.js`.
 
 ---
 
@@ -66,16 +88,28 @@ Balanced messaging: lifestyle headline, treats clear in subheadline + hero image
 
 File: `styleguide.html`
 
-Must include: brand overview, target customer, core values, color tokens, typography, logo direction, photography direction, packaging principles, flavor collection, buttons, proof strip, product card, drop form, voice rules, approved taglines, approved names, forbidden language, claim review notes.
+Must include: configuration architecture, brand overview, target customer, core values, color tokens, typography, logo direction, photography direction, packaging principles, flavor collection, buttons, proof strip, product card, PDP, drop form, voice rules, approved taglines, approved names, forbidden language, claim review notes.
 
 ---
 
 ## 6. Link contract
 
-No bare `href="#"`. Logo → `#top`. Social → instagram.com/treatlife, tiktok.com/@treatlife. Style guide → footer only.
+No bare `href="#"`. Logo → `#top` (or `index.html` on PDP). Style guide → footer only. No external social links in footer.
 
 ---
 
-## 7. Audit
+## 7. Brand concepts
+
+| ID | Name | Assets |
+|----|------|--------|
+| `biggieBones` | Biggie Bones Treat Co. | `assets/biggiebones/` |
+| `treatLife` | Treat Life | `assets/treatlife/` |
+| `treatKings` | Treat Kings | `assets/treatkings/` |
+
+Concept Switcher swaps identity + photography. Marketing copy is shared unless extended per concept.
+
+---
+
+## 8. Audit
 
 Run `prompts/audit-homepage.md` before shipping.

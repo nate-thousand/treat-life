@@ -1,109 +1,119 @@
-# Audit Treat Life Homepage
+# Audit Treat Life Site
 
-Review a Treat Life homepage implementation against the design system. Report pass/fail per category with specific fixes.
+Review the Treat Life implementation against the design system. Report pass/fail per category with specific fixes.
 
 ## Inputs
 
-- Files in `treatlife-ai-design-system/` (`index.html`, `styleguide.html`, `styles.css`, `main.js`)
+- `index.html`, `product.html`, `styleguide.html`, `styles.css`, `main.js`
+- `config/*.js`, `js/*.js`
 - `sources/treatlife-content.md`
 - `components/component-rules.md`
 - `pages/homepage.schema.json`
 - `tokens/treatlife.tokens.json`
-- `../POC_SCOPE.md`
-- `../OUTPUT_CONTRACT.md`
+- `assets/README.md`
+- `../POC_SCOPE.md`, `../OUTPUT_CONTRACT.md`, `../ROADMAP.md`
 
 ## Audit checklist
 
-### 1. Naming lock
-- [ ] Brand is "Treat Life" (correct casing in UI)
+### 1. Configuration architecture
+- [ ] Copy lives in `config/copy.js` — not hardcoded in HTML
+- [ ] Products live in `config/products.js`
+- [ ] Images resolved via `TL_CONFIG.getImages(conceptId)`
+- [ ] Brand identity in `config/brand.concepts.js`
+- [ ] Components render from `js/components.js` — no duplicate product markup
+
+### 2. Naming lock
 - [ ] Flavors: PB & The Jams, Berry Fresh, Gold Standard
-- [ ] No reference to "Golden Flow"
+- [ ] No reference to "Golden Flow" in UI copy
+- [ ] No non-launch flavors (e.g. Pumpkin Power) in UI copy
 
-### 2. Copy accuracy
-Compare each section to `treatlife-content.md`:
+### 3. Copy accuracy
+Compare `config/copy.js` to `sources/treatlife-content.md`:
 
-| Section | Required headline / key copy |
-|---------|------------------------------|
+| Section | Key copy |
+|---------|----------|
 | Announcement | Human Grade. Dog Approved. |
-| Hero | Live the Treat Life. |
+| Hero subheadline | Human grade ingredients… |
 | Proof strip | 4 items with exact titles and copy |
 | Products eyebrow | Launch Collection |
 | Products headline | Three Flavors. Endless Loyalty. |
 | Brand headline | Designed for People With Good Taste. |
 | Drop headline | First batch. Founding customers. |
-| Footer tagline | Live the Treat Life. |
 
-Flag any drift, paraphrasing, or missing sections.
+**Note:** Hero headline and footer tagline are brand-driven (`data-brand-tagline`), not in `copy.js`. Default concept `treatLife` uses tagline from `brand.concepts.js`.
 
-### 3. Navigation
+Flag paraphrasing or missing sections.
+
+### 4. Navigation
 - [ ] Links: Treats, Brand, Ingredients, Drop (exact labels)
 - [ ] CTA: Join the Drop
-- [ ] No deprecated labels (Shop, Our Story, Contact in primary nav)
+- [ ] Footer: Treats, Brand, Ingredients, Drop, Contact, Style Guide
+- [ ] No external social links in footer
+- [ ] PDP nav links use `index.html#` prefix
 
-### 4. Visual system
+### 5. Visual system
 - [ ] Dark backgrounds throughout — no white sections
-- [ ] Gold used for eyebrows, accents, primary CTAs
-- [ ] Flavor accents scoped to correct products via modifier classes:
-  - PB & The Jams → `.product-pb` / `--tl-pink`
-  - Berry Fresh → `.product-berry` / `--tl-berry`
-  - Gold Standard → `.product-gold` / `--tl-mustard`
+- [ ] Gold for eyebrows, accents, primary CTAs
+- [ ] Flavor accents via modifier classes: `.product-pb`, `.product-berry`, `.product-gold`
 - [ ] Buttons: square corners, uppercase, bold
-- [ ] Display headings use Bebas Neue or approved display stack
+- [ ] Display headings use Bebas Neue stack
 
-### 4b. Token sync
-- [ ] `tokens/treatlife.tokens.json` is the source of truth for visual values
-- [ ] `theme/treatlife.theme.css` mirrors JSON as `--tl-*` custom properties
-- [ ] `styles.css` uses only `var(--tl-*)` — no raw hex or rgba
-- [ ] `styleguide.html` swatches use `.sg-swatch-*` classes — no inline hex
+### 5b. Token sync
+- [ ] `tokens/treatlife.tokens.json` is source of truth
+- [ ] `theme/treatlife.theme.css` mirrors JSON as `--tl-*`
+- [ ] `styles.css` uses only `var(--tl-*)` — no raw hex
+- [ ] Style guide swatches use `.sg-swatch-*` — no inline hex
 
-### 4c. Class name contract
-Compare `index.html` against `components/component-rules.md` Class Name Contract:
+### 5c. Class name contract
+Per `components/component-rules.md`:
 
-- [ ] Announcement bar uses `.announcement-bar`
-- [ ] Navbar uses `.site-nav`, `.tl-logo`, `.nav-toggle`, `.nav-menu`
-- [ ] Hero uses `.hero-section`, `.hero-grid`, `.hero-title`, `.hero-actions`
-- [ ] Proof strip uses `.value-strip`, `.value-item`
-- [ ] Product cards use `.product-card` + `.product-pb` / `.product-berry` / `.product-gold`
-- [ ] Drop panel uses `.drop-section`, `.drop-panel`, `.drop-form`
-- [ ] Footer uses `.site-footer`, `.footer-note`
+- [ ] `.announcement-bar`, `.site-nav`, `.hero-section`, `.value-strip`
+- [ ] `.product-card` + flavor modifiers
+- [ ] `.pdp-section`, `.pdp-grid` on product detail
+- [ ] `.drop-section`, `.site-footer`
 - [ ] No parallel or renamed component classes
 
-### 4d. Asset drift
-Compare visible asset content to `sources/treatlife-content.md` and `assets/README.md`:
+### 5d. Asset drift
+- [ ] UI copy does not transcribe unapproved packaging claims (Made in USA, etc.)
+- [ ] Flavor names match content lock, not render-only labels
+- [ ] Per-concept folders: `assets/biggiebones/`, `assets/treatlife/`, `assets/treatkings/`
+- [ ] Standard filenames in each concept folder (see `assets/README.md`)
 
-- [ ] No "Golden Flow" in UI copy (forbidden)
-- [ ] No "Pumpkin Power" or other non-launch flavors in UI copy
-- [ ] No unapproved claims transcribed from packaging renders (e.g. Made in USA)
-- [ ] Flavor names in UI match content lock, not render-only labels
+### 6. Brand concepts
+- [ ] Three concepts: biggieBones, treatLife, treatKings
+- [ ] Concept Switcher updates name, tagline, title, favicon, images
+- [ ] Selection persists in `localStorage` (`tl-brand-concept`)
+- [ ] Legacy `loyalSupply` key maps to `treatKings`
 
-### 5. Voice
+### 7. Product detail page
+- [ ] `product.html?id=flavor-pb-jams` renders all PDP fields from config
+- [ ] Related products section shows sibling flavors
+- [ ] Add to Cart / Buy Now are fake (concept preview only)
+- [ ] 404 state for invalid product id
+
+### 8. Voice
 - [ ] No woof / bark / pawsome / fur baby language
-- [ ] No cartoon or farmhouse aesthetic cues
-- [ ] Copy is short and confident, not playful-pet-store
+- [ ] No design-system labels in UI (e.g. color accent names)
+- [ ] Product cards show flavor profile, not accent color names
 
-### 6. Claims compliance
-- [ ] No unapproved regulated claims (Made in USA, no artificial, etc.)
-- [ ] Concept disclaimer present if pre-launch
+### 9. Claims compliance
+- [ ] No unapproved regulated claims on public surfaces
+- [ ] Concept disclaimer in footer
+- [ ] Nutrition table uses placeholder values with review note
 
-### 7. Structure & accessibility
-- [ ] Section order matches schema
+### 10. Structure & accessibility
+- [ ] Homepage section order matches schema
 - [ ] Anchor IDs: `#treats`, `#brand`, `#ingredients`, `#drop`, `#flavor-*`
-- [ ] No bare `href="#"` links (see OUTPUT_CONTRACT.md)
-- [ ] Images have alt text from content source
-- [ ] Email form has label (visible or screen-reader)
-- [ ] Responsive layout at mobile and desktop
+- [ ] No bare `href="#"` links
+- [ ] Images have alt text
+- [ ] Email form has screen-reader label
+- [ ] Responsive at mobile and desktop
 
-### 8. SEO
-- [ ] Title: `Treat Life | Premium Human Grade Dog Treats`
-- [ ] Meta description matches content source
-
-### 9. Style guide
-- [ ] Brand overview, target customer, core values
-- [ ] Color tokens, typography, logo direction
-- [ ] Photography direction, packaging principles, flavor collection
-- [ ] Components: buttons, proof strip, product card, drop form
-- [ ] Voice rules, approved taglines, approved names, forbidden language, claim notes
-- [ ] Footer link to style guide on homepage
+### 11. Style guide
+- [ ] Configuration architecture section present
+- [ ] Component demos driven by config (product grid, proof strip)
+- [ ] Photography gallery swaps with concept switcher
+- [ ] Footer link from homepage
 
 ## Output format
 
@@ -122,4 +132,4 @@ Compare visible asset content to `sources/treatlife-content.md` and `assets/READ
 ### Score: X/11 categories
 ```
 
-Be specific. Quote the offending copy or CSS value when flagging issues.
+Be specific. Quote offending copy or CSS when flagging issues.

@@ -1,9 +1,11 @@
 # Treat Life Component Rules
 
-Version: 1.0
+Version: 1.1
 Applies to: Web, Shopify, email, social templates
 
-Read `sources/treatlife-content.md` for copy. Read `sources/treatlife-brand-handoff.md` for positioning. Use `tokens/treatlife.tokens.json` and `theme/treatlife.theme.css` for visual values.
+**Configuration:** Read `config/copy.js` for marketing copy, `config/products.js` for product data, `config/images.js` for photography paths, and `config/brand.concepts.js` for brand identity. Read `sources/treatlife-content.md` for copy reference. Read `sources/treatlife-brand-handoff.md` for positioning. Use `tokens/treatlife.tokens.json` and `theme/treatlife.theme.css` for visual values.
+
+**Rendering:** Homepage content is bound by `js/render.js` from `TL_CONFIG`. Reusable markup lives in `js/components.js`. Do not duplicate section HTML across pages.
 
 **Visual sync:** Update JSON first → mirror in `theme/treatlife.theme.css` → use only `var(--tl-*)` in `styles.css`. No raw hex in layout CSS.
 
@@ -21,11 +23,12 @@ Homepage and style guide implementations must use these exact class names. Do no
 | Proof strip | `.value-strip` | `.value-grid`, `.value-item`, `.value-icon` |
 | Products section | `.product-section.section-pad` | `.section-header`, `.product-grid` |
 | Product card | `.product-card` + flavor modifier | `.product-accent`, `.product-pack.product-pack-photo`, `.product-body`, `.accent-label`, `.btn.btn-card` |
+| Product detail | `.pdp-section` | `.pdp-grid`, `.pdp-media`, `.pdp-info`, `.pdp-title`, `.pdp-purchase`, `.pdp-nutrition` |
 | Product flavor modifiers | — | `.product-pb`, `.product-berry`, `.product-gold` |
 | Brand section | `.story-section.section-pad` | `.story-grid`, `.story-copy`, `.brand-image-card` |
 | Copy system | `.copy-system.section-pad` | `.copy-grid`, `.copy-card`, `.copy-card-featured`, `.copy-label`, `.copy-card-image` |
 | Drop panel | `.drop-section` | `.drop-panel`, `.drop-form`, `.form-control`, `.drop-success` |
-| Footer | `.site-footer` | `.footer-grid`, `.footer-logo`, `.footer-links`, `.social-links`, `.footer-note` |
+| Footer | `.site-footer` | `.footer-grid`, `.footer-logo`, `.footer-links`, `.footer-note` |
 | Buttons | `.btn` + variant | `.btn-gold`, `.btn-ghost`, `.btn-outline-gold`, `.btn-lg`, `.btn-card` |
 | Utilities | — | `.container`, `.section-pad`, `.text-center`, `.eyebrow`, `.sr-only` |
 
@@ -125,8 +128,7 @@ Homepage and style guide implementations must use these exact class names. Do no
 | Element | Rule |
 |---------|------|
 | Accent bar | Top stripe in flavor color |
-| Pack mock | Brand name, flavor name (script), flavor profile, "Human Grade Dog Treats" |
-| Accent label | e.g. `Dusty Pink Accent` |
+| Flavor label | Flavor profile, e.g. `Peanut Butter + Blueberry` |
 | CTA | `View Flavor` — full-width, flavor-colored button |
 
 **Flavor token mapping:**
@@ -138,6 +140,32 @@ Homepage and style guide implementations must use these exact class names. Do no
 | Gold Standard | `--tl-mustard` | `#b88b2e` |
 
 **Do not:** Use deprecated name `Golden Flow`.
+
+Product cards link to `product.html?id={product-id}`. Product detail data lives in `config/products.js`.
+
+---
+
+## Product Detail Page
+
+**Purpose:** Single-flavor product view with purchase placeholders.
+
+| Element | Source |
+|---------|--------|
+| Product name | `products[].name` |
+| Flavor / collection | `products[].flavor`, `products[].collection` |
+| Hero image | `TL_CONFIG.getProductImage(product.imageKey)` |
+| Short description | `products[].description` |
+| Key benefits | `products[].benefits` |
+| Ingredients | `products[].ingredients` |
+| Size | `products[].size` |
+| Price | `products[].price` (placeholder) |
+| Quantity | Native number input — concept only |
+| Add to Cart / Buy Now | Fake actions — concept only |
+| Nutrition | `products[].nutrition` |
+| Shipping note | `copy.productPage.shippingNote` |
+| Related products | `products[].relatedProductIds` |
+
+**Do not:** Publish final regulated nutrition or shipping claims without legal review.
 
 ---
 
@@ -184,9 +212,8 @@ Center card (`Good Dogs. Good Treats. Good Taste.`) may receive elevated border/
 
 | Column | Content |
 |--------|---------|
-| Brand | Logo + `Live the Treat Life.` |
-| Nav | Treats, Brand, Ingredients, Drop |
-| Social | Instagram, TikTok, Contact |
+| Brand | Logo + tagline |
+| Nav | Treats, Brand, Ingredients, Drop, Contact, Style Guide |
 
 Include concept disclaimer when shipping pre-launch surfaces.
 

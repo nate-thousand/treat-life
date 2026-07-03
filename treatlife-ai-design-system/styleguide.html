@@ -9,14 +9,118 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="sg-page">
+<body class="sg-page" data-page="styleguide">
   <div class="container">
     <header class="sg-header">
       <p class="eyebrow">Design System</p>
       <h1 class="hero-title sg-title">Treat Life Style Guide</h1>
-      <p class="hero-copy">Foundations, components, and voice rules for the Treat Life POC. Tokens: <code>tokens/treatlife.tokens.json</code></p>
+      <p class="hero-copy">Foundations, components, and voice rules for the Treat Life POC. Tokens: <code>tokens/treatlife.tokens.json</code> · Config: <code>config/</code></p>
       <p class="sg-back"><a href="index.html">← Back to homepage</a></p>
     </header>
+
+    <section class="sg-section">
+      <h2>Configuration Architecture</h2>
+      <div class="sg-prose">
+        <p>This site is a configuration-driven brand system. The visual design, layout, spacing, typography, and components are fixed. Brand identity, marketing copy, product data, and photography paths are separated into configuration layers so multiple brands can reuse the same design system without changing components or CSS.</p>
+      </div>
+      <p class="sg-type-label">Layer stack</p>
+      <div class="sg-packaging-copy">
+        <div class="sg-pack-block sg-pack-block-featured">
+          <span class="copy-label">Rendered Website</span>
+          <p><code>index.html</code> + <code>js/render.js</code></p>
+        </div>
+        <div class="sg-pack-block">
+          <span class="copy-label">Product Data</span>
+          <p><code>config/products.js</code></p>
+        </div>
+        <div class="sg-pack-block">
+          <span class="copy-label">Marketing Content</span>
+          <p><code>config/copy.js</code></p>
+        </div>
+        <div class="sg-pack-block">
+          <span class="copy-label">Brand Configuration</span>
+          <p><code>config/brand.concepts.js</code></p>
+        </div>
+        <div class="sg-pack-block">
+          <span class="copy-label">Design System</span>
+          <p><code>tokens/</code> · <code>theme/</code> · <code>styles.css</code></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Design System</h2>
+      <div class="sg-prose">
+        <p>Visual tokens live in <code>tokens/treatlife.tokens.json</code>, mirror to <code>theme/treatlife.theme.css</code> as <code>--tl-*</code> custom properties, and are consumed by <code>styles.css</code>. Components never hardcode hex values — they use token-backed CSS classes only.</p>
+        <p>Token categories: <strong>Colors</strong>, <strong>Typography</strong>, <strong>Spacing</strong>, <strong>Radius</strong>, <strong>Shadows</strong>, <strong>Borders</strong>, <strong>Gradients</strong>, <strong>Component</strong>, <strong>Naming</strong>.</p>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Brand Configuration</h2>
+      <div class="sg-prose">
+        <p>Each brand concept in <code>config/brand.concepts.js</code> defines identity-only fields: <code>name</code>, <code>tagline</code>, <code>logo</code>, <code>favicon</code>, <code>browserTitle</code>, <code>footerBrandName</code>, <code>socialPreviewImage</code>, and <code>copyright</code>.</p>
+        <p>Components bind brand values through <code>data-brand-name</code>, <code>data-brand-tagline</code>, and related attributes. Marketing copy and product data stay shared across concepts.</p>
+      </div>
+      <p class="sg-type-label">Active concepts</p>
+      <ul class="sg-list">
+        <li><strong>Biggie Bones Treat Co.</strong> — Living That Treat Life.</li>
+        <li><strong>Treat Life</strong> — Reward Better.</li>
+        <li><strong>Treat Kings</strong> — Built for Good Dogs.</li>
+      </ul>
+    </section>
+
+    <section class="sg-section">
+      <h2>Marketing Content</h2>
+      <div class="sg-prose">
+        <p>All user-facing copy lives in <code>config/copy.js</code> under structured keys: <code>copy.hero</code>, <code>copy.about</code>, <code>copy.products</code>, <code>copy.cta</code>, <code>copy.footer</code>, and more. The renderer binds copy to DOM nodes via <code>data-copy-*</code> attributes.</p>
+        <p>To launch a new brand on this system, swap the brand concept — not the component markup.</p>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Product Data</h2>
+      <div class="sg-prose">
+        <p>Products are defined in <code>config/products.js</code> with <code>id</code>, <code>name</code>, <code>flavor</code>, <code>description</code>, <code>imageKey</code>, <code>category</code>, and card styling fields. The Product Grid component in <code>js/components.js</code> renders cards from this data — no hardcoded product HTML in pages.</p>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Photography</h2>
+      <div class="sg-prose">
+        <p>All image paths are centralized in <code>config/images.js</code> as per-concept sets under <code>assets/biggiebones/</code>, <code>assets/treatlife/</code>, and <code>assets/treatkings/</code>. The Concept Switcher swaps the active image set instantly.</p>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Component Architecture</h2>
+      <div class="sg-prose">
+        <p>Reusable section renderers live in <code>js/components.js</code>: Hero bindings, Proof Strip, Product Grid, Product Card, Copy System, CTA, and Footer. Class name contracts are documented in <code>components/component-rules.md</code>.</p>
+        <p>The homepage and style guide share the same Product Grid and Proof Strip markup — one source, no duplication.</p>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Concept Switching</h2>
+      <div class="sg-prose">
+        <p>A developer-only Concept Switcher (bottom-right on the homepage) swaps the active brand configuration and asset set. Switching updates: logo text, brand name, tagline, browser title, footer brand name, favicon placeholder, and all photography from the matching <code>assets/{concept}/</code> folder.</p>
+        <p>Layout, spacing, colors, product names, and marketing copy remain unchanged.</p>
+      </div>
+    </section>
+
+    <section class="sg-section">
+      <h2>Product Detail Page</h2>
+      <div class="sg-prose">
+        <p>Product detail pages live at <code>product.html?id={product-id}</code> and render from <code>config/products.js</code> + <code>config/copy.js</code> via <code>TL_COMPONENTS.renderProductDetail()</code>.</p>
+        <p>Each product includes: name, flavor/collection, hero image, short description, key benefits, ingredients, size, price placeholder, quantity selector, Add to Cart, Buy Now (concept only), nutrition details, shipping note, and related products.</p>
+      </div>
+      <p class="sg-type-label">Example URLs</p>
+      <ul class="sg-list">
+        <li><a href="product.html?id=flavor-pb-jams">PB &amp; The Jams</a></li>
+        <li><a href="product.html?id=flavor-berry-fresh">Berry Fresh</a></li>
+        <li><a href="product.html?id=flavor-gold-standard">Gold Standard</a></li>
+      </ul>
+    </section>
 
     <section class="sg-section">
       <h2>Brand Overview</h2>
@@ -156,29 +260,29 @@
         </div>
       </div>
       <p class="sg-type-label">Reference assets</p>
-      <div class="sg-photo-grid">
+      <div class="sg-photo-grid" data-mount-sg-photos>
         <figure class="sg-photo-card">
-          <img src="assets/hero-lifestyle.png" alt="Treat Life hero lifestyle shot with golden retriever and french bulldog">
+          <img data-sg-image="hero" src="" alt="">
           <figcaption>Hero — lifestyle + packaging</figcaption>
         </figure>
         <figure class="sg-photo-card">
-          <img src="assets/flavor-pb-jams.png" alt="PB and The Jams product photography on concrete">
-          <figcaption>PB &amp; The Jams — concrete surface</figcaption>
+          <img data-sg-image="pb-jams" src="" alt="">
+          <figcaption>PB &amp; The Jams — product photography</figcaption>
         </figure>
         <figure class="sg-photo-card">
-          <img src="assets/flavor-berry-fresh.png" alt="Berry Fresh product photography on marble">
-          <figcaption>Berry Fresh — marble surface</figcaption>
+          <img data-sg-image="berry-fresh" src="" alt="">
+          <figcaption>Berry Fresh — product photography</figcaption>
         </figure>
         <figure class="sg-photo-card">
-          <img src="assets/flavor-gold-standard.png" alt="Gold Standard product photography with sweet potato and honey">
-          <figcaption>Gold Standard — sweet potato + honey</figcaption>
+          <img data-sg-image="gold-standard" src="" alt="">
+          <figcaption>Gold Standard — product photography</figcaption>
         </figure>
         <figure class="sg-photo-card">
-          <img src="assets/brand-board.png" alt="Treat Life brand board with packaging and merchandise">
+          <img data-sg-image="brandBoard" src="" alt="">
           <figcaption>Brand board — identity + products</figcaption>
         </figure>
         <figure class="sg-photo-card">
-          <img src="assets/brand-board-unboxing.png" alt="Treat Life unboxing and collateral board">
+          <img data-sg-image="unboxing" src="" alt="">
           <figcaption>Unboxing — box interior + collateral</figcaption>
         </figure>
       </div>
@@ -187,11 +291,11 @@
     <section class="sg-section">
       <h2>Brand Visual Reference</h2>
       <p class="sg-note">Brand board and typography/color system exploration.</p>
-      <div class="sg-brand-visual">
-        <img src="assets/brand-board.png" alt="Treat Life brand board with logo, products, and strategy">
+      <div class="sg-brand-visual" data-sg-image-wrap="brandBoard">
+        <img data-sg-image="brandBoard" src="" alt="">
       </div>
-      <div class="sg-brand-visual" style="margin-top: 1rem;">
-        <img src="assets/style-guide.png" alt="Treat Life style guide with logo, typography, and colors">
+      <div class="sg-brand-visual" style="margin-top: 1rem;" data-sg-image-wrap="styleGuide">
+        <img data-sg-image="styleGuide" src="" alt="">
       </div>
     </section>
 
@@ -237,74 +341,14 @@
     <section class="sg-section">
       <h2>Proof Strip</h2>
       <div class="sg-component-preview sg-component-preview-wide">
-        <div class="value-grid sg-proof-demo">
-          <div class="value-item">
-            <div class="value-icon" aria-hidden="true">◎</div>
-            <h3>Human Grade</h3>
-            <p>Real ingredients. Real benefits.</p>
-          </div>
-          <div class="value-item">
-            <div class="value-icon" aria-hidden="true">◇</div>
-            <h3>Simple Ingredient Standard</h3>
-            <p>No junky fillers. No unnecessary extras. No compromises.</p>
-          </div>
-          <div class="value-item">
-            <div class="value-icon" aria-hidden="true">●</div>
-            <h3>Dog Approved</h3>
-            <p>Crafted for dogs. Designed for modern homes.</p>
-          </div>
-          <div class="value-item">
-            <div class="value-icon" aria-hidden="true">✚</div>
-            <h3>Premium Batch Standard</h3>
-            <p>Built for quality, consistency, and strong shelf presence.</p>
-          </div>
-        </div>
+        <div class="value-grid sg-proof-demo" data-mount-sg-proof-strip></div>
       </div>
     </section>
 
     <section class="sg-section">
       <h2>Product Cards</h2>
       <div class="sg-component-preview sg-component-preview-wide">
-        <div class="product-grid sg-product-demo">
-          <article class="product-card product-pb">
-            <div class="product-accent"></div>
-            <div class="product-pack product-pack-photo">
-              <img src="assets/flavor-pb-jams.png" alt="Treat Life PB and The Jams packaging">
-            </div>
-            <div class="product-body">
-              <span class="accent-label">Dusty Pink Accent</span>
-              <h4>PB &amp; The Jams</h4>
-              <p>Peanut butter, blueberry, and hip hop energy. The playful flavor in the launch set.</p>
-              <a href="index.html#flavor-pb-jams" class="btn btn-card">View Flavor</a>
-            </div>
-          </article>
-
-          <article class="product-card product-berry">
-            <div class="product-accent"></div>
-            <div class="product-pack product-pack-photo">
-              <img src="assets/flavor-berry-fresh.png" alt="Treat Life Berry Fresh packaging">
-            </div>
-            <div class="product-body">
-              <span class="accent-label">Deep Berry Accent</span>
-              <h4>Berry Fresh</h4>
-              <p>Bright, clean, and energetic. A fruit forward everyday treat with premium visual impact.</p>
-              <a href="index.html#flavor-berry-fresh" class="btn btn-card">View Flavor</a>
-            </div>
-          </article>
-
-          <article class="product-card product-gold">
-            <div class="product-accent"></div>
-            <div class="product-pack product-pack-photo">
-              <img src="assets/flavor-gold-standard.png" alt="Treat Life Gold Standard packaging">
-            </div>
-            <div class="product-body">
-              <span class="accent-label">Muted Mustard Accent</span>
-              <h4>Gold Standard</h4>
-              <p>Sweet potato and honey with a classic premium profile. The flagship flavor.</p>
-              <a href="index.html#flavor-gold-standard" class="btn btn-card">View Flavor</a>
-            </div>
-          </article>
-        </div>
+        <div class="product-grid sg-product-demo" data-mount-sg-product-grid></div>
       </div>
     </section>
 
@@ -312,19 +356,19 @@
       <h2>Flavor Collection</h2>
       <div class="sg-flavor-grid">
         <article class="sg-flavor-card sg-flavor-pb">
-          <span class="accent-label">Dusty Pink</span>
+          <span class="accent-label">Human Grade Dog Treats</span>
           <h3>PB &amp; The Jams</h3>
           <p>Peanut Butter + Blueberry</p>
           <p class="sg-flavor-mood">Playful · Hip hop · Music</p>
         </article>
         <article class="sg-flavor-card sg-flavor-berry">
-          <span class="accent-label">Deep Berry Red</span>
+          <span class="accent-label">Human Grade Dog Treats</span>
           <h3>Berry Fresh</h3>
           <p>Strawberry + Banana</p>
           <p class="sg-flavor-mood">Bright · Fresh · Energetic</p>
         </article>
         <article class="sg-flavor-card sg-flavor-gold">
-          <span class="accent-label">Muted Mustard</span>
+          <span class="accent-label">Human Grade Dog Treats</span>
           <h3>Gold Standard</h3>
           <p>Sweet Potato + Honey</p>
           <p class="sg-flavor-mood">Classic · Premium · Craft</p>
@@ -433,6 +477,13 @@
     </section>
   </div>
 
+  <script src="config/images.js"></script>
+  <script src="config/products.js"></script>
+  <script src="config/copy.js"></script>
+  <script src="config/brand.concepts.js"></script>
+  <script src="config/index.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/render.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

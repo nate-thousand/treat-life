@@ -8,11 +8,12 @@
 | Vanilla HTML/CSS/JS | Locked |
 | Design system = tokens + style guide | Locked |
 | Hub = `treatlife-ai-design-system/` | Locked |
+| Configuration-driven brand system | Locked |
+| Three previewable brand concepts | Locked |
 | Balanced homepage messaging | Locked |
-| Style guide = foundations + components | Locked |
-| Fake drop form | Locked |
+| Style guide = foundations + components + architecture | Locked |
+| Fake drop form + fake PDP actions | Locked |
 | Archive `v1/` | Locked |
-| One `main.js` file | Locked |
 | Style guide link in footer | Locked |
 
 ## Build Rules
@@ -22,9 +23,8 @@ Keep this as a static proof of concept.
 Do not add:
 
 - Shopify
-- ecommerce logic
-- cart
-- checkout
+- real ecommerce logic
+- real cart / checkout
 - backend
 - database
 - user accounts
@@ -35,13 +35,21 @@ Do not add:
 
 ## JavaScript Scope
 
-Use one file: `main.js`
+Vanilla JS only. No libraries.
 
-Allowed behavior only:
+| File | Role |
+|------|------|
+| `config/*.js` | Brand, copy, products, images |
+| `js/components.js` | Reusable section renderers |
+| `js/render.js` | DOM binding from config |
+| `main.js` | Nav toggle, fake forms, concept switcher |
 
-1. Mobile nav toggle support if needed
-2. Fake drop form submit
-3. Simple success message after submit
+Allowed behavior:
+
+1. Mobile nav toggle
+2. Fake drop form submit + success message
+3. Fake PDP Add to Cart / Buy Now
+4. Brand concept switcher (identity + assets)
 
 Do not add:
 
@@ -51,18 +59,29 @@ Do not add:
 - analytics
 - external form services yet
 
+## Pages
+
+| Page | File |
+|------|------|
+| Homepage | `index.html` |
+| Product detail | `product.html?id={product-id}` |
+| Style guide | `styleguide.html` |
+
 ## Repo Direction
 
 Use `treatlife-ai-design-system/` as the source of truth.
 
 Archive the old `v1/` folder.
 
-The website is generated from or aligned with the design system — not the other way around.
+The website is rendered from configuration + design system — not hardcoded markup.
+
+See `ROADMAP.md` for phase plan.
 
 ## Style Guide
 
 Static style guide at `treatlife-ai-design-system/styleguide.html`:
 
+- Configuration architecture
 - Brand overview
 - Color tokens
 - Typography rules
@@ -70,15 +89,9 @@ Static style guide at `treatlife-ai-design-system/styleguide.html`:
 - Photography direction
 - Packaging principles
 - Flavor collection
-- Buttons
-- Product cards
-- Proof strip
-- Drop form
-- Voice rules
-- Approved taglines
-- Approved product names
-- Forbidden language
-- Claim review notes
+- Buttons, product cards, proof strip, drop form, PDP
+- Voice rules, approved taglines, approved names
+- Forbidden language, claim review notes
 
 Footer link from homepage → style guide.
 
@@ -86,7 +99,7 @@ Footer link from homepage → style guide.
 
 A clean GitHub and Vercel ready proof of concept that shows:
 
-- Treat Life as a premium brand concept
-- A working one page website
-- A reusable AI first design system structure
+- Multiple brand concepts on one design system
+- A working homepage + product detail page
+- A reusable AI-first design system structure
 - A repeatable process for future branded websites

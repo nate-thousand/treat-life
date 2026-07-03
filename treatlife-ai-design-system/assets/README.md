@@ -1,57 +1,42 @@
-# Treat Life Assets
+# Brand Assets
 
-Brand photography and reference images for the POC site.
+Concept-specific photography lives in subfolders. The Concept Switcher loads the matching set at runtime.
 
-**Content lock:** `sources/treatlife-content.md` wins for all UI copy, flavor names, and claims. Assets are concept renders — do not transcribe visible packaging text into the site if it conflicts with the content source.
+## Folder structure
 
-## Active assets
+```
+assets/
+├── biggiebones/     # Biggie Bones Treat Co.
+│   ├── _source/     # Original UUID renders (not wired to site)
+│   └── *.png        # Standard-named active assets
+├── treatlife/       # Treat Life
+└── treatkings/      # Treat Kings
+    └── _source/     # Full hero source for cropping
+```
+
+## Standard filenames (each concept folder)
 
 | File | Use |
 |------|-----|
-| `hero-lifestyle.png` | Homepage hero — golden retriever + french bulldog |
-| `flavor-pb-jams.png` | PB & The Jams product + copy Front card |
-| `flavor-berry-fresh.png` | Berry Fresh product photography |
-| `flavor-gold-standard.png` | Gold Standard product photography |
-| `brand-board.png` | Homepage brand section + style guide |
-| `brand-board-unboxing.png` | Copy system Box card — shipping box interior |
-| `style-guide.png` | Copy system Brand card + style guide |
+| `hero-lifestyle.png` | Homepage hero |
+| `flavor-pb-jams.png` | PB & The Jams product card + PDP |
+| `flavor-berry-fresh.png` | Berry Fresh product card + PDP |
+| `flavor-gold-standard.png` | Gold Standard product card + PDP |
+| `brand-board.png` | Brand story section |
+| `brand-board-unboxing.png` | Copy system Box card |
+| `style-guide.png` | Copy system Brand card |
 
-## Archive
+## Configuration
 
-| File | Notes |
-|------|-------|
-| `hero-dogs-legacy.png` | Previous hero (lab + golden retriever on steps). Not used on site. |
+Image sets: `config/images.js`  
+Resolved at runtime: `TL_CONFIG.getImages(conceptId)`
 
-## Asset vs content drift
+## Adding assets
 
-These renders may show copy or names that differ from `sources/treatlife-content.md`. Use assets for mood and layout only — never copy conflicting text into UI.
+1. Place renders in the concept folder using standard filenames above
+2. Keep original source files in `_source/` if needed
+3. Do not reference image paths in components — use `TL_CONFIG.getProductImage()` / `getPackagingImage()`
 
-| Asset | Visible in render | Content lock | Action |
-|-------|-------------------|--------------|--------|
-| `hero-lifestyle.png` | "Pumpkin Power" flavor label | Launch flavors: PB & The Jams, Berry Fresh, Gold Standard | Use as lifestyle hero only. Do not add Pumpkin Power to site copy. |
-| `brand-board.png` | "Golden Flow" flavor name | Forbidden — use **Gold Standard** | Use for brand mood board. Never reference Golden Flow in UI. |
-| `flavor-pb-jams.png` | "Made in USA", crown mark | Claims pending legal review; logo direction prefers shield + paw | Product photography only. Do not publish unapproved claims from packaging art. |
-| `flavor-berry-fresh.png` | Packaging microcopy may vary | Berry Fresh naming + Deep Berry accent | Match flavor name from content source, not render text. |
-| `flavor-gold-standard.png` | Packaging microcopy may vary | Gold Standard naming + Muted Mustard accent | Match flavor name from content source, not render text. |
-| `brand-board-unboxing.png` | Box interior collateral copy | "Good Dogs. Good Treats. Good Taste." is approved | Featured copy card may echo approved tagline; ignore other render-only text. |
-| `style-guide.png` | Reference board labels | Follow style guide + token names | Visual reference only. |
+## Content lock
 
-## Site usage
-
-- `index.html` — hero, product cards, brand section, copy system cards
-- `styleguide.html` — photography gallery, brand visual reference
-
-## Naming convention
-
-```
-hero-{descriptor}.png
-flavor-{slug}.png
-brand-board.png
-brand-board-unboxing.png
-style-guide.png
-```
-
-## Notes
-
-- Product shots are concept renders. Packaging copy may differ from `sources/treatlife-content.md`.
-- Do not deploy until approved.
+UI copy and flavor names come from `config/copy.js` and `config/products.js` — not from packaging art in renders.
