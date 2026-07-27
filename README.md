@@ -43,7 +43,7 @@ python3 -m http.server 8080
 npx vercel --prod
 ```
 
-Production: https://treatlife.vercel.app
+Production: https://treat-life.vercel.app
 
 ## Brand concepts
 
@@ -60,3 +60,4 @@ Switch via the Concept dropdown on any page:
 ## Status
 
 Concept POC only. No real commerce, backend, or regulated claims.
+
